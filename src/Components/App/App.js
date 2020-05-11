@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { Todos } from '../Todos/Todos';
 
 export default class App extends Component {
   state = {
@@ -8,10 +9,19 @@ export default class App extends Component {
     ]
   }
   
+deleteTodo = (id) => {
+  let duplicatedTodoList = [...this.state.todos]
+  duplicatedTodoList.filter( todo => {
+    return todo.id === id
+  })
+  return console.log(duplicatedTodoList)
+}
+
   render() {
     return (
-      <div className="App">
-      
+      <div className="todo-app container">
+      <h1 className="center blue-text">Todo's</h1>
+      <Todos todos={this.state.todos} deleteTodo={this.deleteTodo}/>
       </div>
     )
   }
